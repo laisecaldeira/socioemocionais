@@ -100,11 +100,11 @@ if st.session_state.usuario_logado:
     st.stop()
 
 # TELA PRINCIPAL
-st.title("Avaliação de Competências Socioemocionais")
+st.title("Avaliação de Capacidades Socioemocionais")
 
 st.markdown("""
 ### **Sobre esta Avaliação**
-Este formulário tem como objetivo avaliar **competências socioemocionais**, com foco na **Inteligência Emocional**.  
+Este formulário tem como objetivo avaliar **capacidades socioemocionais**, com foco na **Inteligência Emocional**.  
 As respostas serão analisadas para ajudar no crescimento profissional da equipe.
 """)
 
@@ -261,7 +261,7 @@ with col_graficos:
             if df_filtrado.empty:
                 st.warning("Você precisa preencher os campos obrigatórios.")
             else:
-                st.write("📈 **Evolução das Competências ao Longo do Tempo**")
+                st.write("📈 **Evolução das Capacidades ao Longo do Tempo**")
 
                 col1, col2 = st.columns(2)  # Criando duas colunas para exibição dos gráficos lado a lado
                 
@@ -318,5 +318,3 @@ with col_graficos:
                                 ))
                                 fig2.update_layout(template="plotly_white", margin=dict(l=20, r=20, t=40, b=20))
                             st.plotly_chart(fig2, use_container_width=True, key=f"grafico_{lista_perguntas[i+1]}")
-
-
