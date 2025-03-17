@@ -100,11 +100,11 @@ if st.session_state.usuario_logado:
     st.stop()
 
 # TELA PRINCIPAL
-st.title("Avaliação de Competências Socioemocionais")
+st.title("Avaliação de Capacidades Socioemocionais")
 
 st.markdown("""
 ### **Sobre esta Avaliação**
-Este formulário tem como objetivo avaliar **competências socioemocionais**, com foco na **Inteligência Emocional**.  
+Este formulário tem como objetivo avaliar **capacidades socioemocionais**, com foco na **Inteligência Emocional**.  
 As respostas serão analisadas para ajudar no crescimento profissional da equipe.
 """)
 
@@ -159,7 +159,7 @@ with col_form:
     descricoes_niveis = {
         "1. Expressar opiniões divergentes de forma construtiva": {
             1: "Reconhece opiniões divergentes.",
-            2: "Entende opiniões divergentes de forma construtiva, de maneira franca e respeitosa.",
+            2: "Expressa opiniões divergentes de forma construtiva, de maneira franca e respeitosa.",
             3: "Expressa opiniões divergentes de forma construtiva, de maneira franca e respeitosa, não se intimidando em posicionar-se.",
             4: "Acolhe e expressa opiniões divergentes de forma construtiva, de maneira franca e respeitosa, não se intimidando em posicionar-se."
         },
@@ -196,8 +196,8 @@ with col_form:
 }
 
     # Exibição dos sliders com tooltips dinâmicos
-    st.write("### 🎯 **Avalie cada competência de 1 a 4**")
-    st.write("1 - Iniciante | 2 - Intermediário | 3 - Proficiente | 4 - Avançado")
+    st.write("### 🎯 **Avalie cada capacidade de 1 a 4. As capacidades avaliadas contemplam as competências Liderança e influência social e Habilidades de relacionamento**")
+    st.write("1 - Abaixo do básico | 2 - Básico | 3 - Adequado | 4 - Avançado")
 
     # Exibição dos sliders com tooltips dinâmicos
     perguntas = {}
@@ -261,7 +261,7 @@ with col_graficos:
             if df_filtrado.empty:
                 st.warning("Você precisa preencher os campos obrigatórios.")
             else:
-                st.write("📈 **Evolução das Competências ao Longo do Tempo**")
+                st.write("📈 **Evolução das capacidades ao Longo do Tempo**")
 
                 col1, col2 = st.columns(2)  # Criando duas colunas para exibição dos gráficos lado a lado
                 
