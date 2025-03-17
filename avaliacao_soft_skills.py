@@ -159,7 +159,7 @@ with col_form:
     descricoes_niveis = {
         "1. Expressar opiniões divergentes de forma construtiva": {
             1: "Reconhece opiniões divergentes.",
-            2: "Entende opiniões divergentes de forma construtiva, de maneira franca e respeitosa.",
+            2: "Expressa opiniões divergentes de forma construtiva, de maneira franca e respeitosa.",
             3: "Expressa opiniões divergentes de forma construtiva, de maneira franca e respeitosa, não se intimidando em posicionar-se.",
             4: "Acolhe e expressa opiniões divergentes de forma construtiva, de maneira franca e respeitosa, não se intimidando em posicionar-se."
         },
@@ -196,8 +196,8 @@ with col_form:
 }
 
     # Exibição dos sliders com tooltips dinâmicos
-    st.write("### 🎯 **Avalie cada competência de 1 a 4**")
-    st.write("1 - Iniciante | 2 - Intermediário | 3 - Proficiente | 4 - Avançado")
+    st.write("### 🎯 **Avalie cada capacidade de 1 a 4. As capacidades avaliadas contemplam as competências Liderança e Influência Social e Habilidades de Relacionamento.**")
+    st.write("1 - Abaixo do básico | 2 - Básico | 3 - Adequado | 4 - Avançado")
 
     # Exibição dos sliders com tooltips dinâmicos
     perguntas = {}
