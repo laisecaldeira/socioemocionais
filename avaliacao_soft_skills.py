@@ -118,7 +118,6 @@ with col_form:
     
     # Lista de nomes disponíveis para a Avaliação de Pares
     lista_nomes = [
-        "Amanda Silva de Deus",
         "Ana Maria Sousa da Silva",
         "Anderson Garcia Scarlassara",
         "Anna Christina Theodora Aun de Azevedo Nascimento",
@@ -137,7 +136,6 @@ with col_form:
         "Juliana Gavini Uliana Pappetti",
         "Laise Caldeira Pedroso",
         "Lucas de Freitas Sousa",
-        "Luciana Brasil Marques",
         "Luis Alberto Silva Monti",
         "Monica de Castro Mariano Carneiro",
         "Natalia Schultz de Souza",
