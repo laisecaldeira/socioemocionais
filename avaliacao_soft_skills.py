@@ -55,7 +55,8 @@ def salvar_respostas(dados):
 
 def carregar_dados():
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name(GOOGLE_SHEET_CRED_PATH, scope)
+    google_creds = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(google_creds, scope)
     gspread_client = gspread.authorize(creds)
     sheet = gspread_client.open(GOOGLE_SHEET_NAME).sheet1
     data = sheet.get_all_records()
