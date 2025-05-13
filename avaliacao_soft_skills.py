@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
+import json
 import datetime
 import plotly.express as px
 import gspread
@@ -20,7 +21,8 @@ if "usuario_logado" not in st.session_state:
     st.session_state.usuario_logado = None  # Armazena o e-mail do usuário logado
 
 # Função para salvar os dados na planilha
-GOOGLE_SHEET_CRED_PATH = "credencial_google.json"
+google_creds = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
+
 GOOGLE_SHEET_NAME = "historico_avaliacoes"
 
 #Salvar respostas
@@ -28,7 +30,7 @@ def salvar_respostas(dados):
     dados["Data"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name(GOOGLE_SHEET_CRED_PATH, scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(google_creds, scope)
     gspread_client = gspread.authorize(creds)  # <- corrigido aqui
 
     try:
