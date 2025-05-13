@@ -74,9 +74,6 @@ def analisar_respostas(respostas):
 
     if st.button("Analisar respostas"):
         feedback = analisar_respostas(perguntas)
-    
-    except RateLimitError:
-        st.error("Limite da API da OpenAI atingido. Tente novamente em alguns instantes.")
 
 def carregar_dados():
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
