@@ -257,15 +257,15 @@ with col_form:
             )
 
     if st.button("📩 Enviar Respostas"):
-    dados = {
-        "E-mail do Colaborador": email_colaborador,
-        "Nome do Avaliador": nome_avaliador,
-        "Tipo de Avaliação": tipo_avaliacao,
-        "Nome do Avaliado": nome_avaliado,
-        "Data": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        **perguntas
-    }
-    salvar_respostas(dados)
+        dados = {
+            "E-mail do Colaborador": email_colaborador,
+            "Nome do Avaliador": nome_avaliador,
+            "Tipo de Avaliação": tipo_avaliacao,
+            "Nome do Avaliado": nome_avaliado,
+            "Data": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            **perguntas
+        }
+        salvar_respostas(dados)
     
 with col_graficos:
     if os.path.exists(HISTORICO_FILE):
