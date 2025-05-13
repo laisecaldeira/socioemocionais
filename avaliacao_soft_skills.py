@@ -7,6 +7,7 @@ import plotly.express as px
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from openai import OpenAI
+from openai.error import RateLimitError
 
 # Criação do cliente OpenAI com chave vinda do secrets.toml (ou st.secrets)
 client = OpenAI(api_key=st.secrets["openai_api_key"])
@@ -65,12 +66,18 @@ def analisar_respostas(respostas):
         mensagem += f"- {pergunta}: nota {nota}\n"
 
     response = client.responses.create(
-        model="gpt-4o",
+        model="gpt-4",
         input=mensagem
     )
 
     # Compatível com o novo SDK
     print(response.output_text)
+
+    if st.button("Analisar respostas"):
+        feedback = analisar_respostas(perguntas)
+    
+    except RateLimitError:
+        st.error("Limite da API da OpenAI atingido. Tente novamente em alguns instantes.")
 
 def carregar_dados():
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
