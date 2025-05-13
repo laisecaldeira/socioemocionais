@@ -6,10 +6,6 @@ import datetime
 import plotly.express as px
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from openai import OpenAI
-
-# Criação do cliente OpenAI com chave vinda do secrets.toml (ou st.secrets)
-client = OpenAI(api_key=st.secrets["openai_api_key"])
 
 # Nome do arquivo CSV onde os dados serão armazenados
 HISTORICO_FILE = "historico_avaliacoes.csv"
@@ -31,7 +27,7 @@ def salvar_respostas(dados):
 
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_dict(google_creds, scope)
-    gspread_client = gspread.authorize(creds)  # <- corrigido aqui
+    gspread_client = gspread.authorize(creds)
 
     try:
         sheet = gspread_client.open(GOOGLE_SHEET_NAME).sheet1
@@ -56,24 +52,6 @@ def salvar_respostas(dados):
 
     df = df[list(dados.keys())]
     df.to_csv(HISTORICO_FILE, index=False)
-
-# Função para gerar feedback com IA
-def analisar_respostas(respostas):
-    mensagem = "Considere que você é um coach especializado em competências socioemocionais. Analise as respostas abaixo e forneça um feedback personalizado e construtivo:\n\n"
-
-    for pergunta, nota in respostas.items():
-        mensagem += f"- {pergunta}: nota {nota}\n"
-
-    response = client.responses.create(
-        model="gpt-4",
-        input=mensagem
-    )
-
-    # Compatível com o novo SDK
-    print(response.output_text)
-
-    if st.button("Analisar respostas"):
-        feedback = analisar_respostas(perguntas)
 
 def carregar_dados():
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
