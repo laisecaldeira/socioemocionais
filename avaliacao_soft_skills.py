@@ -7,7 +7,6 @@ import plotly.express as px
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from openai import OpenAI
-from openai.error import RateLimitError
 
 # Criação do cliente OpenAI com chave vinda do secrets.toml (ou st.secrets)
 client = OpenAI(api_key=st.secrets["openai_api_key"])
@@ -73,10 +72,6 @@ def analisar_respostas(respostas):
             ]
         )
         return response.choices[0].message.content
-
-    except RateLimitError:
-        st.error("Seu feedback não pode ser gerado. Tente novamente em alguns instantes.")
-        return ""
 
     # Compatível com o novo SDK
     print(response.output_text)
