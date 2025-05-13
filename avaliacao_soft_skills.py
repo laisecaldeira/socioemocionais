@@ -265,16 +265,6 @@ with col_form:
             "Data": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             **perguntas
         }
-        salvar_respostas(dados)
-
-        feedback = analisar_respostas(perguntas)
-        st.success("✅ Respostas registradas com sucesso!")
-        st.markdown("### 💬 Feedback gerado pela IA:")
-        st.info(feedback)
-
-        st.session_state["respostas_enviadas"] = False
-
-
 
 with col_graficos:
     if os.path.exists(HISTORICO_FILE):
