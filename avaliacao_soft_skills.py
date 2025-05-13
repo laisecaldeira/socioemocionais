@@ -65,10 +65,18 @@ def analisar_respostas(respostas):
     for pergunta, nota in respostas.items():
         mensagem += f"- {pergunta}: nota {nota}\n"
 
-    response = client.responses.create(
-        model="gpt-4",
-        input=mensagem
-    )
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "user", "content": mensagem}
+            ]
+        )
+        return response.choices[0].message.content
+
+    except RateLimitError:
+        st.error("Seu feedback não pode ser gerado. Tente novamente em alguns instantes.")
+        return ""
 
     # Compatível com o novo SDK
     print(response.output_text)
