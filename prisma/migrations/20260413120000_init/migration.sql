@@ -1,0 +1,2 @@
+-- This migration is intentionally omitted for brevity in generated scaffold.
+-- Run `npx prisma migrate dev --name init` to generate vendor-specific SQL.
